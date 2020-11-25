@@ -64,7 +64,8 @@ public class PlanarDelaunayTriangulation
         
         // create a random permutation of the corners.
         // use a fixed seed to get reproducable result
-        random_generator.setSeed(seed);
+        // random_generator.setSeed(seed);
+        random_generator.setSeed(System.currentTimeMillis());
         Collections.shuffle(corner_list, random_generator);
         
         // create a big triangle contaning all corners in the list to start with.
@@ -341,8 +342,9 @@ public class PlanarDelaunayTriangulation
      * Randum generatur to shuffle the input corners.
      * A fixed seed is used to make the results reproduceble.
      */
-    static private int seed = 99;
-    static private java.util.Random random_generator = new java.util.Random(seed);
+    //static private int seed = 99;
+    // static private java.util.Random random_generator = new java.util.Random(seed);
+    static private java.util.Random random_generator = new java.util.Random(System.currentTimeMillis());
     
     /**
      * Interface with funktionality required for objects to be used

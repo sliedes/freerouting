@@ -581,7 +581,8 @@ public class PolygonShape extends PolylineShape
             // not yet precalculated
         {
             // use a fixed seed to get reproducable result
-            random_generator.setSeed(seed);
+            //random_generator.setSeed(seed);
+            random_generator.setSeed(System.currentTimeMillis());
             Collection<PolygonShape> convex_pieces = split_to_convex_recu();
             if(convex_pieces == null)
             {
@@ -698,8 +699,9 @@ public class PolygonShape extends PolylineShape
     transient private IntBox precalculated_bounding_box = null;
     transient private IntOctagon precalculated_bounding_octagon = null;
     transient private TileShape[] precalculated_convex_pieces = null;
-    static private int seed = 99;
-    static private java.util.Random random_generator = new java.util.Random(seed);
+    // static private int seed = 99;
+    // static private java.util.Random random_generator = new java.util.Random(seed);
+    static private java.util.Random random_generator = new java.util.Random(System.currentTimeMillis());
     
     private class DivisionPoint
     {

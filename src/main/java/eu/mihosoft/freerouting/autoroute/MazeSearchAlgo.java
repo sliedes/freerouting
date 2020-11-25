@@ -83,7 +83,8 @@ public class MazeSearchAlgo
     {
         autoroute_engine = p_autoroute_engine;
         ctrl = p_ctrl;
-        random_generator.setSeed(p_ctrl.ripup_costs); // To get reproducable random numbers in the ripup algorithm.
+        // random_generator.setSeed(p_ctrl.ripup_costs); // To get reproducable random numbers in the ripup algorithm.
+        random_generator.setSeed(System.currentTimeMillis());
         this.search_tree = p_autoroute_engine.autoroute_search_tree;
         maze_expansion_list = new TreeSet<MazeListElement>();
         destination_distance =
