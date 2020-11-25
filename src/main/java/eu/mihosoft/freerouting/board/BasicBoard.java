@@ -1487,7 +1487,7 @@ public class BasicBoard implements java.io.Serializable
      */
     public void generate_snapshot()
     {
-        FRLogger.info("Generating snapshot");
+        // FRLogger.info("Generating snapshot");
 
         item_list.generate_snapshot();
         components.generate_snapshot();
