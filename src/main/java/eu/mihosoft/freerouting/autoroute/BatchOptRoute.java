@@ -67,11 +67,13 @@ public class BatchOptRoute
         int curr_pass_no = 0;
         use_increased_ripup_costs = true;
 
-        while (route_improved)
+        while (!this.thread.is_stop_requested())
         {
             ++curr_pass_no;
             boolean with_prefered_directions = (curr_pass_no % 2 != 0); // to create more variations
             route_improved = opt_route_pass(curr_pass_no, with_prefered_directions);
+            if (!route_improved)
+            FRLogger.info("Stop.");
         }
     }
 
@@ -196,6 +198,7 @@ public class BatchOptRoute
             routing_board.pop_snapshot();
             double new_trace_length = this.thread.hdlg.coordinate_transform.board_to_user(this.routing_board.cumulative_trace_length());
             this.thread.hdlg.screen_messages.set_post_route_info(via_count_after, new_trace_length);
+            FRLogger.info("Pass " + p_pass_no + ": Improved: " + incomplete_count_after + " incomplete, " + via_count_after + " vias, " + new_trace_length + " trace.");
         }
         else
         {
